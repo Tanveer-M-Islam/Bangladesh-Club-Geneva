@@ -16,4 +16,9 @@ class EditHomepageSetting extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        \Illuminate\Support\Facades\Cache::forget('site_setting');
+    }
 }

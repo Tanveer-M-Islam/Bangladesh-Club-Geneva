@@ -111,7 +111,11 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ url('/') }}" class="flex items-center gap-3">
-                        <img src="{{ asset('images/logo.png') }}" alt="Bangladesh Club Geneva" class="h-16 w-auto">
+                        @if($siteSetting && $siteSetting->navbar_logo_path)
+                            <img src="{{ asset('storage/' . $siteSetting->navbar_logo_path) }}" alt="Bangladesh Club Geneva" class="h-16 w-auto">
+                        @else
+                            <img src="{{ asset('images/logo.png') }}" alt="Bangladesh Club Geneva" class="h-16 w-auto">
+                        @endif
                     </a>
                 </div>
 
@@ -201,7 +205,11 @@
                 <!-- Brand & About -->
                 <div class="lg:col-span-2">
                     <a href="{{ url('/') }}" class="inline-block mb-6">
-                        <img src="{{ asset('images/logo.png') }}" alt="BCG Logo" class="h-16 w-auto">
+                        @if($siteSetting && $siteSetting->navbar_logo_path)
+                            <img src="{{ asset('storage/' . $siteSetting->navbar_logo_path) }}" alt="BCG Logo" class="h-16 w-auto">
+                        @else
+                            <img src="{{ asset('images/logo.png') }}" alt="BCG Logo" class="h-16 w-auto">
+                        @endif
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed max-w-md">
                         {{ $footerSetting->footer_info ?? 'Bangladesh Club Geneva (BCG) is a community organization dedicated to promoting Bangladeshi culture and supporting the community in Geneva.' }}
