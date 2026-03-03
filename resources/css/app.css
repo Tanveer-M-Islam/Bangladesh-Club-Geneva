@@ -1,0 +1,50 @@
+/* Bangladesh Club Geneva - Custom Styles */
+
+body {
+    background-color: #0c0c0c;
+    color: #ffffff;
+}
+
+.glass-navbar {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Utilities */
+.glass {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+/* Typography Fixes for Tailwind Reset */
+.prose ul,
+.filament-rich-editor ul {
+    list-style-type: disc !important;
+    padding-left: 1.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.prose ol,
+.filament-rich-editor ol {
+    list-style-type: decimal !important;
+    padding-left: 1.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.prose li,
+.filament-rich-editor li {
+    margin-bottom: 0.25rem !important;
+}
+
+.prose p {
+    margin-bottom: 1rem !important;
+}

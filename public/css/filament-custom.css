@@ -1,0 +1,27 @@
+/* Filament Admin Panel Custom Typography Fixes */
+.fi-ta-text ul,
+.fi-fo-rich-editor ul,
+.trix-editor ul,
+.ProseMirror ul {
+    list-style-type: disc !important;
+    padding-left: 1.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.fi-ta-text ol,
+.fi-fo-rich-editor ol,
+.trix-editor ol,
+.ProseMirror ol {
+    list-style-type: decimal !important;
+    padding-left: 1.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.fi-ta-text li,
+.fi-fo-rich-editor li,
+.trix-editor li,
+.ProseMirror li {
+    margin-bottom: 0.25rem !important;
+}
