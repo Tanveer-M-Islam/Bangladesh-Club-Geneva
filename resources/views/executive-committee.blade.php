@@ -9,7 +9,7 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="executive-hero-content">
         <h1 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">Executive Committee</h1>
         <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">Meet the dedicated leaders guiding the Bangladesh Club Geneva.</p>
-        <div class="w-24 h-1.5 bg-green-600 mx-auto mt-8 rounded-full"></div>
+        <div class="w-24 h-1.5 bg-red-600 mx-auto mt-8 rounded-full"></div>
     </div>
 </section>
 

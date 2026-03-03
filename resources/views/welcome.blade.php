@@ -62,10 +62,6 @@
                     <div class="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                 </a>
 
-                @php
-                    $hasNotices = \App\Models\Notice::active()->exists();
-                @endphp
-
                 @if($hasNotices)
                 <!-- Announcement - Secondary CTA -->
                 <a href="{{ route('notice') }}" class="group relative px-10 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white font-extrabold rounded-2xl shadow-lg transition-all duration-500 hover:bg-white/20 hover:scale-[1.05] active:scale-95 flex items-center gap-4 overflow-hidden">

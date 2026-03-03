@@ -3,7 +3,7 @@
 @section('content')
 <!-- Hero Section -->
 <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/about-hero-bg.jpg') }}'); opacity: 0.2;"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/about-hero-bg.jpg') }}'); opacity: 0.3;"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="members-hero-content">

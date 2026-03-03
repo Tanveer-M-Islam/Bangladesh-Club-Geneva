@@ -52,6 +52,7 @@ class AlbumResource extends Resource
                     ->label('Photos')
                     ->multiple()
                     ->image()
+                    ->imageResizeTargetWidth(1200)
                     ->imageEditor()
                     ->reorderable()
                     ->appendFiles()

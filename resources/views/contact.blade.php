@@ -4,10 +4,10 @@
 
 <!-- Hero Section -->
 <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
-    <div class="absolute inset-0 bg-gray-800 opacity-50"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/contact-hero-bg.jpg') }}'); opacity: 0.3;"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
     
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="news-hero-content">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="contact-hero-content">
         <h1 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">Contact Us</h1>
         <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">We'd love to hear from you. Please reach out to us using the form or the details below.</p>
         <div class="w-24 h-1.5 bg-red-600 mx-auto mt-8 rounded-full"></div>
@@ -153,6 +153,15 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         if (typeof gsap !== 'undefined') {
+            // Hero Content Entrance
+            gsap.from("#contact-hero-content > *", {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+
             // Animate Contact Info Card (Left to Right)
             gsap.from('.contact-info-card', {
                 duration: 1,

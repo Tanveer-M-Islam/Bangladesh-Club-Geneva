@@ -57,6 +57,7 @@ class AboutBcgSettingResource extends Resource
                         FileUpload::make('president_image_path')
                             ->label('President Photo')
                             ->image()
+                            ->imageResizeTargetWidth(800)
                             ->directory('about')
                             ->disk('public')
                             ->visibility('public')
@@ -80,6 +81,7 @@ class AboutBcgSettingResource extends Resource
                         FileUpload::make('gs_image_path')
                             ->label('General Secretary Photo')
                             ->image()
+                            ->imageResizeTargetWidth(800)
                             ->directory('about')
                             ->disk('public')
                             ->visibility('public')
@@ -160,6 +162,7 @@ class AboutBcgSettingResource extends Resource
                                         FileUpload::make('image_path')
                                             ->label('Member Photo')
                                             ->image()
+                                            ->imageResizeTargetWidth(500)
                                             ->directory('executive-committee')
                                             ->disk('public')
                                             ->visibility('public'),

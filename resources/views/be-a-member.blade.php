@@ -4,7 +4,7 @@
 
 <!-- Hero Section -->
 <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
-    <div class="absolute inset-0 bg-gray-800 opacity-50"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/membership-hero-bg.jpg') }}'); opacity: 0.3;"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="membership-hero-content">
@@ -233,11 +233,12 @@
             });
 
             // Hero content animation
-            gsap.from('#membership-hero-content', {
-                duration: 1.2,
-                y: 40,
+            gsap.from('#membership-hero-content > *', {
+                y: 50,
                 opacity: 0,
-                ease: 'back.out(1.7)'
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out"
             });
         }
     });

@@ -1,15 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gray-900 overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('{{ asset('images/hero-bg.jpg') }}');"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-black text-white mb-4 uppercase tracking-tighter" id="title">Support BCG</h1>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto font-light" id="subtitle">Your donations help us organize events and support the community.</p>
+<!-- Hero Section -->
+<section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 bg-gray-900 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero-bg.jpg') }}'); opacity: 0.3;"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="donation-hero-content">
+        <h1 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">Support BCG</h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">Your donations help us organize events and support the community.</p>
+        <div class="w-24 h-1.5 bg-red-600 mx-auto mt-8 rounded-full"></div>
     </div>
 </section>
 
-<div class="bg-gray-50 py-16 lg:py-24">
+<div class="bg-gray-50 py-16 lg:py-24 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         @if(session('success'))
@@ -95,8 +99,15 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        gsap.from("#title", { opacity: 0, y: -30, duration: 0.8, ease: "power2.out" });
-        gsap.from("#subtitle", { opacity: 0, y: -20, duration: 0.8, delay: 0.2, ease: "power2.out" });
+        // Hero Content Entrance
+        gsap.from("#donation-hero-content > *", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
         gsap.from("#left-side", { opacity: 0, x: -50, duration: 1, delay: 0.4, ease: "power2.out" });
         gsap.from("#right-side", { opacity: 0, x: 50, duration: 1, delay: 0.6, ease: "power2.out" });
     });

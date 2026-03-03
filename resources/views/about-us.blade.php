@@ -2,14 +2,14 @@
 
 @section('content')
 <!-- Hero Section for About Us -->
-<section class="relative pt-40 pb-16 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
+<section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/about-hero-bg.jpg') }}'); opacity: 0.3;"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="about-hero-content">
-        <h1 class="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 lg:mb-6 uppercase tracking-tight">About Us</h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light px-4">Discover the mission, vision, and principles guiding the Bangladesh Club Geneva.</p>
-        <div class="w-24 h-1.5 bg-green-600 mx-auto mt-8 rounded-full"></div>
+        <h1 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">About Us</h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">Discover the mission, vision, and principles guiding the Bangladesh Club Geneva.</p>
+        <div class="w-24 h-1.5 bg-red-600 mx-auto mt-8 rounded-full"></div>
     </div>
 </section>
 
@@ -27,7 +27,7 @@
                         </div>
                         <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">{{ $aboutBcgSetting?->mission_title ?? 'Our Mission' }}</h2>
                     </div>
-                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left">
+                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left overflow-y-auto max-h-[400px] scrollbar-custom pr-4">
                         @if($aboutBcgSetting?->mission_text)
                             {!! $aboutBcgSetting->mission_text !!}
                         @else
@@ -68,7 +68,7 @@
                         </div>
                         <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">{{ $aboutBcgSetting?->vision_title ?? 'Our Vision' }}</h2>
                     </div>
-                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left">
+                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left overflow-y-auto max-h-[400px] scrollbar-custom pr-4">
                         @if($aboutBcgSetting?->vision_text)
                             {!! $aboutBcgSetting->vision_text !!}
                         @else
@@ -87,9 +87,9 @@
                         <div class="w-16 h-16 mx-auto sm:mx-0 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         </div>
-                        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">{{ $aboutBcgSetting?->terms_title ?? 'Committee Terms & Rules' }}</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">Membership Policy</h2>
                     </div>
-                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none sm:text-left">
+                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none sm:text-left overflow-y-auto max-h-[400px] scrollbar-custom pr-4">
                         @if($aboutBcgSetting?->terms_text)
                             {!! $aboutBcgSetting->terms_text !!}
                         @else

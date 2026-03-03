@@ -13,7 +13,7 @@
 
 <!-- Hero Section -->
 <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
-    <div class="absolute inset-0 bg-gray-800 opacity-50"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/notice-hero-bg.jpg') }}'); opacity: 0.3;"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="notice-hero-content">
@@ -136,6 +136,15 @@
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
 
+            // Hero Content Entrance
+            gsap.from('#notice-hero-content > *', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+
             gsap.from('.notice-item', {
                 scrollTrigger: {
                     trigger: '#notice-stack',
@@ -147,14 +156,6 @@
                 stagger: 0.2,
                 ease: 'power3.out',
                 clearProps: "all"
-            });
-            
-            gsap.from('#notice-hero-content > *', {
-                duration: 1,
-                y: 30,
-                opacity: 0,
-                stagger: 0.2,
-                ease: "power3.out"
             });
         }
     });

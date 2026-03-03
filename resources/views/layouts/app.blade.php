@@ -12,12 +12,6 @@
 
     <!-- Tailwind Play CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-
-    <!-- Custom Styles -->
-    <!-- Custom Styles (Removed broken link) -->
-    @if(file_exists(public_path('css/app.css')))
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @endif
     
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -90,13 +84,26 @@
             border-radius: 50%;
             display: block;
         }
+
+        /* Custom Scrollbar */
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
+    @stack('styles')
 </head>
 <body class="antialiased overflow-x-hidden">
-    @php
-        $hasNotices = \App\Models\Notice::active()->exists();
-    @endphp
-
     <!-- Navbar -->
     <nav x-data="{ mobileMenuOpen: false }" class="fixed top-0 left-0 right-0 z-50 glass-navbar transition-all duration-300 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -258,5 +265,7 @@
             // Any global animations if needed
         });
     </script>
+    @yield('scripts')
+    @stack('scripts')
 </body>
 </html>
