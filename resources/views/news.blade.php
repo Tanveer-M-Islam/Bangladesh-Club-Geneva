@@ -13,6 +13,53 @@
     </div>
 </section>
 
+<!-- Filter Form Section -->
+<div class="bg-white border-b border-gray-100 py-6 sticky top-[72px] lg:top-[88px] z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <form action="{{ route('news') }}" method="GET" class="flex flex-col sm:flex-row items-end gap-4 max-w-3xl mx-auto">
+            <div class="w-full sm:flex-1">
+                <label for="month" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Month</label>
+                <select name="month" id="month" class="w-full rounded-xl border-gray-200 shadow-sm focus:border-red-500 focus:ring-red-500 py-3 px-4 bg-gray-50 text-gray-700 font-medium">
+                    <option value="">All Months</option>
+                    @foreach(range(1, 12) as $m)
+                        <option value="{{ sprintf('%02d', $m) }}" {{ request('month') == sprintf('%02d', $m) ? 'selected' : '' }}>
+                            {{ date('F', mktime(0, 0, 0, $m, 1)) }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            
+            <div class="w-full sm:flex-1">
+                <label for="year" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Year</label>
+                <select name="year" id="year" class="w-full rounded-xl border-gray-200 shadow-sm focus:border-red-500 focus:ring-red-500 py-3 px-4 bg-gray-50 text-gray-700 font-medium">
+                    <option value="">All Years</option>
+                    @php
+                        $currentYear = date('Y');
+                        $startYear = 2020;
+                    @endphp
+                    @for($y = $currentYear; $y >= $startYear; $y--)
+                        <option value="{{ $y }}" {{ request('year') == $y ? 'selected' : '' }}>
+                            {{ $y }}
+                        </option>
+                    @endfor
+                </select>
+            </div>
+            
+            <div class="w-full sm:w-auto flex gap-3">
+                <button type="submit" class="flex-1 sm:flex-none px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-600/20 transition-all active:scale-95 uppercase tracking-wider text-sm flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    Filter
+                </button>
+                @if(request('month') || request('year'))
+                    <a href="{{ route('news') }}" class="flex-1 sm:flex-none px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-all active:scale-95 uppercase tracking-wider text-sm flex items-center justify-center">
+                        Clear
+                    </a>
+                @endif
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- News Articles Section -->
 <div class="bg-gray-50 py-16 lg:py-24 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

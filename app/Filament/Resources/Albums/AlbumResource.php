@@ -26,6 +26,8 @@ class AlbumResource extends Resource
     protected static ?string $model = Album::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
+    
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationLabel = 'Photo Gallery Settings';
 

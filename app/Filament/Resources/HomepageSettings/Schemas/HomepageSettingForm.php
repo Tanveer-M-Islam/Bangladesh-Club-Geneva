@@ -56,6 +56,10 @@ class HomepageSettingForm
                         FileUpload::make('ad2_path')->label('Ad Slot 2')->image()->directory('ads')->disk('public')->visibility('public'),
                         FileUpload::make('ad3_path')->label('Ad Slot 3')->image()->directory('ads')->disk('public')->visibility('public'),
                         FileUpload::make('ad4_path')->label('Ad Slot 4')->image()->directory('ads')->disk('public')->visibility('public'),
+                        FileUpload::make('ad5_path')->label('Ad Slot 5')->image()->directory('ads')->disk('public')->visibility('public'),
+                        FileUpload::make('ad6_path')->label('Ad Slot 6')->image()->directory('ads')->disk('public')->visibility('public'),
+                        FileUpload::make('ad7_path')->label('Ad Slot 7')->image()->directory('ads')->disk('public')->visibility('public'),
+                        FileUpload::make('ad8_path')->label('Ad Slot 8')->image()->directory('ads')->disk('public')->visibility('public'),
                     ])->columns(2),
 
                 Section::make('Global Assets')

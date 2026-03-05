@@ -19,7 +19,7 @@ class HomepageSettingResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-home';
 
-    protected static ?int $navigationSort = -1;
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $navigationLabel = 'Homepage Settings';
 
@@ -37,10 +37,7 @@ class HomepageSettingResource extends Resource
         return HomepageSettingForm::configure($schema);
     }
 
-    public static function table(Table $table): Table
-    {
-        return HomepageSettingsTable::configure($table);
-    }
+
 
     public static function getPages(): array
     {

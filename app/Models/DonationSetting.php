@@ -10,7 +10,7 @@ class DonationSetting extends Model
         'bank_name',
         'bank_iban',
         'bank_account_name',
-        'twint_number',
+        'twint_qr_code_path',
         'donation_note',
     ];
 }

@@ -60,8 +60,31 @@ Route::get('/general-members', function () {
     return view('general-members', compact('generalMembers'));
 })->name('general-members');
 
-Route::get('/news', function () {
+Route::get('/news', function (\Illuminate\Http\Request $request) {
     $newsSetting = \App\Models\NewsSetting::first();
+    
+    $newsItems = collect($newsSetting?->news_items ?? []);
+
+    if ($request->filled('month')) {
+        $month = sprintf('%02d', $request->month);
+        $newsItems = $newsItems->filter(function ($item) use ($month) {
+            if (empty($item['published_date'])) return false;
+            return \Carbon\Carbon::parse($item['published_date'])->format('m') === $month;
+        });
+    }
+
+    if ($request->filled('year')) {
+        $year = $request->year;
+        $newsItems = $newsItems->filter(function ($item) use ($year) {
+            if (empty($item['published_date'])) return false;
+            return \Carbon\Carbon::parse($item['published_date'])->format('Y') == $year;
+        });
+    }
+
+    if ($newsSetting) {
+        $newsSetting->news_items = $newsItems->values()->all();
+    }
+
     return view('news', compact('newsSetting'));
 })->name('news');
 

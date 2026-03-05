@@ -402,7 +402,42 @@
 </section>
 @endif
 
+<!-- Advertisement Section 2 (Below GS) -->
+<section id="ads-section-2" class="py-20 bg-[#f3f4f6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            @php
+                $ads2 = [
+                    $siteSetting->ad5_path ?? null,
+                    $siteSetting->ad6_path ?? null,
+                    $siteSetting->ad7_path ?? null,
+                    $siteSetting->ad8_path ?? null,
+                ];
+            @endphp
 
+            @foreach($ads2 as $index => $adPath)
+                <div class="ad-card-2 opacity-0 translate-y-20" data-index="{{ $index }}">
+                    <div class="relative group h-64 md:h-72 rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
+                        @if($adPath)
+                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 5 }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        @else
+                            <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center">
+                                <div class="w-16 h-16 mb-4 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 group-hover:bg-red-600/20 transition-colors">
+                                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                </div>
+                                <p class="text-gray-900 font-bold uppercase tracking-widest text-sm">Contact for advertisement</p>
+                                <p class="text-gray-500 text-[10px] mt-2 italic">Your business here</p>
+                            </div>
+                        @endif
+                        
+                        <!-- Premium Shine Overlay -->
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-white/10 via-transparent to-transparent transition-opacity duration-700 pointer-events-none"></div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
@@ -462,6 +497,19 @@
         gsap.to(".ad-card", {
             scrollTrigger: {
                 trigger: "#ads-section",
+                start: "top 85%",
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.4)"
+        });
+
+        // Ads Section 2 Animations
+        gsap.to(".ad-card-2", {
+            scrollTrigger: {
+                trigger: "#ads-section-2",
                 start: "top 85%",
             },
             y: 0,

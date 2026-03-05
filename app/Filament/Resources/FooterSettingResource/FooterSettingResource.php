@@ -21,6 +21,8 @@ class FooterSettingResource extends Resource
     protected static ?string $model = FooterSetting::class;
 
     protected static BackedEnum|string|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
+    
+    protected static ?int $navigationSort = 11;
 
     protected static ?string $navigationLabel = 'Footer Settings';
 

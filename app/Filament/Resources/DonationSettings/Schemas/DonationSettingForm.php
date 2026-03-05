@@ -18,8 +18,12 @@ class DonationSettingForm
                     ->default(null),
                 TextInput::make('bank_account_name')
                     ->default(null),
-                TextInput::make('twint_number')
-                    ->default(null),
+                \Filament\Forms\Components\FileUpload::make('twint_qr_code_path')
+                    ->label('QR Code Image')
+                    ->image()
+                    ->directory('donations')
+                    ->disk('public')
+                    ->visibility('public'),
                 Textarea::make('donation_note')
                     ->default(null)
                     ->columnSpanFull(),

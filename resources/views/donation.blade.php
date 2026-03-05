@@ -41,10 +41,17 @@
                         </div>
                     </div>
 
-                    <div class="p-6 bg-red-50 rounded-2xl border border-red-100">
-                        <h3 class="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">TWINT</h3>
-                        <p class="text-2xl font-black text-red-700">{{ $donationSetting->twint_number ?? '+41 79 123 45 67' }}</p>
-                        <p class="text-xs text-red-500 mt-1 italic">Scan or send to this number</p>
+                    <div class="p-6 bg-red-50 rounded-2xl border border-red-100 flex flex-col items-center justify-center text-center">
+                        <h3 class="text-sm font-bold text-red-600 uppercase tracking-wider mb-4">Payment QR Code</h3>
+                        @if($donationSetting && $donationSetting->twint_qr_code_path)
+                            <img src="{{ asset('storage/' . $donationSetting->twint_qr_code_path) }}" alt="Payment QR Code" class="w-full max-w-[200px] h-auto object-contain rounded-xl border border-red-200 shadow-sm transition-transform duration-300 hover:scale-105">
+                        @else
+                            <div class="w-full max-w-[200px] aspect-square bg-red-100/50 rounded-xl border-2 border-dashed border-red-200 flex flex-col items-center justify-center text-red-400 p-4">
+                                <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                                <span class="text-xs font-medium">QR Code Not Set</span>
+                            </div>
+                        @endif
+                        <p class="text-xs text-red-500 mt-4 italic font-medium">Scan this QR code with your payment app</p>
                     </div>
                 </div>
 

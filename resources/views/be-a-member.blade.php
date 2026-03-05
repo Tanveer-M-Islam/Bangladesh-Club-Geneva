@@ -26,10 +26,10 @@
             </div>
         @endif
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-stretch border-none m-0 p-0">
             
             <!-- Left Side: Payment / Bank Information (Animated Left to Right) -->
-            <div class="space-y-8 py-4 lg:pl-4 membership-info-card">
+            <div class="flex flex-col h-full lg:pr-4 membership-info-card">
                 
                 <div class="bg-white p-8 md:p-10 rounded-3xl shadow-[0_5px_40px_rgb(0,0,0,0.06)] border border-gray-100">
                     <div class="flex items-center mb-8">
@@ -39,17 +39,40 @@
                         <h2 class="ml-5 text-2xl font-black text-gray-900 uppercase tracking-tight">Payment Details</h2>
                     </div>
 
-                    <div class="prose prose-green max-w-none text-gray-600">
-                        @if($setting && $setting->payment_details)
-                            {!! $setting->payment_details !!}
-                        @else
-                            <p class="italic text-gray-400">Bank and payment details will be appearing here soon. Please contact the administrator for more information.</p>
-                        @endif
+                    <div class="space-y-6">
+                        <!-- Bank Transfer Card -->
+                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                            <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Bank Transfer</h3>
+                            <div class="space-y-3 text-gray-700 font-medium">
+                                <p class="flex justify-between items-center"><span class="text-gray-500">Bank:</span> <span class="text-gray-900 text-right">{{ $setting->bank_name ?? 'UBS Switzerland AG' }}</span></p>
+                                <p class="flex justify-between items-center"><span class="text-gray-500">IBAN:</span> <span class="text-gray-900 text-right">{{ $setting->bank_iban ?? 'CH31 0900 0000 1610 6061 9' }}</span></p>
+                                <p class="flex justify-between items-center"><span class="text-gray-500">Account:</span> <span class="text-gray-900 text-right">{{ $setting->bank_account_name ?? 'Bangladesh Club Geneva' }}</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Payment QR Code Card -->
+                        <div class="p-6 bg-red-50 rounded-2xl border border-red-100 flex flex-col items-center justify-center text-center">
+                            <h3 class="text-sm font-bold text-red-600 uppercase tracking-wider mb-4">Payment QR Code</h3>
+                            @if($setting && $setting->qr_code_path)
+                                <img src="{{ asset('storage/' . $setting->qr_code_path) }}" alt="Payment QR Code" class="w-full max-w-[200px] h-auto object-contain rounded-xl border border-red-200 shadow-sm transition-transform duration-300 hover:scale-105">
+                            @else
+                                <div class="w-full max-w-[200px] aspect-square bg-red-100/50 rounded-xl border-2 border-dashed border-red-200 flex flex-col items-center justify-center text-red-400 p-4">
+                                    <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                                    <span class="text-xs font-medium">QR Code Not Set</span>
+                                </div>
+                            @endif
+                            <p class="text-xs text-red-500 mt-4 italic font-medium">Scan this QR code with your payment app</p>
+                        </div>
+                    </div>
+
+                    <!-- Note Section -->
+                    <div class="mt-6 p-4 bg-blue-50 text-blue-700 rounded-xl text-sm leading-relaxed border border-blue-100">
+                        <strong>Note:</strong> {{ $setting->payment_note ?? 'Please upload a screenshot or photo of your payment confirmation using the form on the right.' }}
                     </div>
                 </div>
 
                 <!-- Why Join Card -->
-                <div class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 md:p-10 rounded-3xl shadow-xl border border-gray-700 text-white overflow-hidden relative group">
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 md:p-10 rounded-3xl shadow-xl border border-gray-700 text-white overflow-hidden relative group flex-1 flex flex-col justify-center mt-8">
                     <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-red-600/10 rounded-full blur-3xl group-hover:bg-red-600/20 transition-colors duration-500"></div>
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-8 bg-red-600 mr-4 rounded-full"></span>
@@ -74,7 +97,7 @@
             </div>
             
             <!-- Right Side: Registration Form (Animated Right to Left) -->
-            <div class="bg-white rounded-3xl shadow-[0_5px_40px_rgb(0,0,0,0.06)] p-8 md:p-12 border border-gray-100 relative overflow-hidden membership-form-card">
+            <div class="bg-white rounded-3xl shadow-[0_5px_40px_rgb(0,0,0,0.06)] p-8 md:p-12 border border-gray-100 relative overflow-hidden membership-form-card h-full flex flex-col justify-center">
                 <!-- Decorative subtle element in corner -->
                 <div class="absolute -top-24 -right-24 w-48 h-48 bg-green-50 rounded-full blur-3xl opacity-60"></div>
 

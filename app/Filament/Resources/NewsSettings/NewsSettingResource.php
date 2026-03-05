@@ -19,6 +19,8 @@ class NewsSettingResource extends Resource
     protected static ?string $model = NewsSetting::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    
+    protected static ?int $navigationSort = 4;
 
     protected static ?string $recordTitleAttribute = 'page_title';
 

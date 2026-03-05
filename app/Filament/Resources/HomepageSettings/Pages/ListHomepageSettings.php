@@ -4,16 +4,20 @@ namespace App\Filament\Resources\HomepageSettings\Pages;
 
 use App\Filament\Resources\HomepageSettings\HomepageSettingResource;
 use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\EditRecord;
 
-class ListHomepageSettings extends ListRecords
+class ListHomepageSettings extends EditRecord
 {
     protected static string $resource = HomepageSettingResource::class;
 
-    protected function getHeaderActions(): array
+    public function mount(int | string $record = 1): void
     {
-        return [
-            CreateAction::make(),
-        ];
+        $setting = \App\Models\SiteSetting::firstOrCreate(['id' => 1]);
+        parent::mount($setting->id);
+    }
+
+    protected function getActions(): array
+    {
+        return [];
     }
 }

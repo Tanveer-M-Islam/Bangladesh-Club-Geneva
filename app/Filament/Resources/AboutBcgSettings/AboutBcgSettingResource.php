@@ -30,6 +30,8 @@ class AboutBcgSettingResource extends Resource
     protected static ?string $model = AboutBcgSetting::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;
+    
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $label = 'About BCG Settings';
 

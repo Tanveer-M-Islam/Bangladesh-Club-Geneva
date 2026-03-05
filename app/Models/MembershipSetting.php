@@ -10,6 +10,10 @@ class MembershipSetting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'payment_details',
+        'bank_name',
+        'bank_iban',
+        'bank_account_name',
+        'qr_code_path',
+        'payment_note',
     ];
 }
