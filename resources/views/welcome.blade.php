@@ -398,6 +398,14 @@
             </div>
             
         </div>
+
+        <!-- View All Speeches Button -->
+        <div class="mt-16 text-center">
+             <a href="{{ route('speech') }}" class="inline-flex items-center gap-4 px-10 py-4 bg-green-600 hover:bg-green-700 text-white font-black uppercase tracking-widest rounded-full shadow-xl shadow-green-900/20 transition-all duration-500 hover:scale-[1.05] active:scale-95 group">
+                <span>View All Speeches</span>
+                <svg class="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
     </div>
 </section>
 @endif

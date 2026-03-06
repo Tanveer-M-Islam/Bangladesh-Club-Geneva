@@ -60,6 +60,11 @@ Route::get('/general-members', function () {
     return view('general-members', compact('generalMembers'));
 })->name('general-members');
 
+Route::get('/about/speech', function () {
+    $aboutBcgSetting = AboutBcgSetting::first();
+    return view('speech', compact('aboutBcgSetting'));
+})->name('speech');
+
 Route::get('/news', function (\Illuminate\Http\Request $request) {
     $newsSetting = \App\Models\NewsSetting::first();
     

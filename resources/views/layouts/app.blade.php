@@ -128,6 +128,7 @@
                         <div x-show="open" x-transition class="absolute pt-4 -left-4 w-48">
                             <div class="bg-black/90 border border-white/10 rounded-lg shadow-xl py-2 backdrop-blur-xl">
                                 <a href="{{ route('about-us') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('about-us') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">About us</a>
+                                <a href="{{ route('speech') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('speech') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">Speech</a>
                                 <a href="{{ route('executive-committee') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('executive-committee') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">Executive Committee</a>
                                 <a href="{{ route('general-members') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('general-members') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">General Member</a>
                             </div>
@@ -170,6 +171,7 @@
                     </button>
                     <div x-show="openAbout" x-cloak class="bg-white/5 border-b border-white/5">
                         <a href="{{ route('about-us') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('about-us') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">About us</a>
+                        <a href="{{ route('speech') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('speech') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">Speech</a>
                         <a href="{{ route('executive-committee') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('executive-committee') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">Executive Committee</a>
                         <a href="{{ route('general-members') }}" class="block px-6 py-3 text-sm font-medium {{ request()->routeIs('general-members') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">General Member</a>
                     </div>

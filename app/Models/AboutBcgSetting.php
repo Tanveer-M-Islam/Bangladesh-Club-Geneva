@@ -28,10 +28,12 @@ class AboutBcgSetting extends Model
         'terms_text',
         'executive_members',
         'general_members',
+        'other_speeches',
     ];
 
     protected $casts = [
         'executive_members' => 'array',
         'general_members' => 'array',
+        'other_speeches' => 'array',
     ];
 }

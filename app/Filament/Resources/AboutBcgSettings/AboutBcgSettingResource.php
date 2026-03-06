@@ -96,6 +96,37 @@ class AboutBcgSettingResource extends Resource
                             ->columnSpanFull(),
                     ])->columns(2),
 
+                Section::make('Other Speeches')
+                    ->description('Add speeches from other important individuals.')
+                    ->icon('heroicon-o-microphone')
+                    ->schema([
+                        Repeater::make('other_speeches')
+                            ->label('Additional Speeches')
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label('Name')
+                                    ->required(),
+                                TextInput::make('designation')
+                                    ->label('Designation / Role')
+                                    ->required(),
+                                FileUpload::make('image_path')
+                                    ->label('Photo')
+                                    ->image()
+                                    ->imageResizeTargetWidth(800)
+                                    ->directory('speeches')
+                                    ->disk('public')
+                                    ->visibility('public')
+                                    ->required(),
+                                RichEditor::make('speech')
+                                    ->label('Speech Text')
+                                    ->required()
+                                    ->columnSpanFull(),
+                            ])
+                            ->columns(3)
+                            ->collapsible()
+                            ->itemLabel(fn (array $state): ?string => $state['name'] ?? null),
+                    ])->columnSpanFull(),
+
                 \Filament\Schemas\Components\Tabs::make('About Us Page Content')
                     ->tabs([
                         \Filament\Schemas\Components\Tabs\Tab::make('Mission')
