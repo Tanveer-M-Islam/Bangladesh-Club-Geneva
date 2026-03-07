@@ -57,9 +57,9 @@
                     >
                         <!-- Image Container with minimal margin -->
                         <div class="relative w-full aspect-[4/5] sm:aspect-square mb-5 rounded-2xl bg-gradient-to-tr from-green-400 to-blue-500 p-[2px] group-hover:from-green-500 group-hover:to-blue-600 transition-all duration-500">
-                            <div class="w-full h-full rounded-2xl overflow-hidden bg-gray-100 relative">
+                            <div class="w-full h-full rounded-2xl overflow-hidden bg-white relative">
                                 @if(!empty($member['image_path']))
-                                    <img src="{{ asset('storage/' . $member['image_path']) }}" alt="{{ $member['name'] }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                    <img src="{{ asset('storage/' . $member['image_path']) }}" alt="{{ $member['name'] }}" class="absolute inset-0 w-full h-full object-contain p-1 transition-transform duration-700 group-hover:scale-105">
                                 @else
                                     <div class="w-full h-full flex items-center justify-center text-gray-300 bg-gray-50 border-4 border-white rounded-2xl">
                                         <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" /></svg>

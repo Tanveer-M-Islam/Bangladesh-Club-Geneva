@@ -122,7 +122,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ url('/') }}" class="text-sm font-medium transition-colors {{ request()->is('/') ? 'text-red-500' : 'hover:text-red-500' }}">Home</a>
                     <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
-                        <button class="text-sm font-medium transition-colors flex items-center gap-1 {{ request()->routeIs(['about-us', 'executive-committee', 'general-members']) ? 'text-red-500' : 'hover:text-red-500' }}">
+                        <button class="text-sm font-medium transition-colors flex items-center gap-1 {{ request()->routeIs(['about-us', 'speech', 'executive-committee', 'general-members', 'membership.policy']) ? 'text-red-500' : 'hover:text-red-500' }}">
                             About BCG <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="open" x-transition class="absolute pt-4 -left-4 w-48">
@@ -131,6 +131,7 @@
                                 <a href="{{ route('speech') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('speech') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">Speech</a>
                                 <a href="{{ route('executive-committee') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('executive-committee') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">Executive Committee</a>
                                 <a href="{{ route('general-members') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('general-members') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">General Member</a>
+                                <a href="{{ route('membership.policy') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('membership.policy') ? 'text-red-500 bg-white/10' : 'hover:bg-white/10' }}">Membership Policy</a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +166,7 @@
             <div class="px-4 pt-2 pb-6 space-y-1">
                 <a href="{{ url('/') }}" class="block px-3 py-4 text-base font-semibold border-b border-white/5 {{ request()->is('/') ? 'text-red-500' : 'hover:text-red-500' }}">Home</a>
                 <div x-data="{ openAbout: false }">
-                    <button @click="openAbout = !openAbout" class="w-full flex items-center justify-between px-3 py-4 text-base font-semibold border-b border-white/5 focus:outline-none text-left {{ request()->routeIs(['about-us', 'executive-committee', 'general-members']) ? 'text-red-500' : 'hover:text-red-500' }}">
+                    <button @click="openAbout = !openAbout" class="w-full flex items-center justify-between px-3 py-4 text-base font-semibold border-b border-white/5 focus:outline-none text-left {{ request()->routeIs(['about-us', 'speech', 'executive-committee', 'general-members', 'membership.policy']) ? 'text-red-500' : 'hover:text-red-500' }}">
                         About BCG
                         <svg :class="openAbout ? 'rotate-180' : ''" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
@@ -173,7 +174,8 @@
                         <a href="{{ route('about-us') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('about-us') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">About us</a>
                         <a href="{{ route('speech') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('speech') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">Speech</a>
                         <a href="{{ route('executive-committee') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('executive-committee') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">Executive Committee</a>
-                        <a href="{{ route('general-members') }}" class="block px-6 py-3 text-sm font-medium {{ request()->routeIs('general-members') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">General Member</a>
+                        <a href="{{ route('general-members') }}" class="block px-6 py-3 text-sm font-medium border-b border-white/5 {{ request()->routeIs('general-members') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">General Member</a>
+                        <a href="{{ route('membership.policy') }}" class="block px-6 py-3 text-sm font-medium {{ request()->routeIs('membership.policy') ? 'text-red-500' : 'text-white/80 hover:text-white' }}">Membership Policy</a>
                     </div>
                 </div>
                 <a href="{{ route('gallery.index') }}" class="block px-3 py-4 text-base font-semibold border-b border-white/5 {{ request()->routeIs('gallery.index') ? 'text-red-500' : 'hover:text-red-500' }}">Photo Gallery</a>

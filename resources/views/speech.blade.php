@@ -25,7 +25,7 @@
                 <div class="absolute -top-4 -left-4 w-full h-full bg-[#e8f5e9] rounded-3xl -z-10"></div>
                 <div class="bg-white p-4 rounded-3xl shadow-xl">
                     @if($aboutBcgSetting->president_image_path)
-                    <img src="{{ asset('storage/' . $aboutBcgSetting->president_image_path) }}" alt="{{ $aboutBcgSetting->president_name }}" class="w-full h-auto aspect-[4/5] object-cover rounded-2xl">
+                    <img src="{{ asset('storage/' . $aboutBcgSetting->president_image_path) }}" alt="{{ $aboutBcgSetting->president_name }}" class="w-full h-auto aspect-[4/5] object-contain bg-white rounded-2xl">
                     @else
                     <div class="w-full aspect-[4/5] bg-gray-200 rounded-2xl flex items-center justify-center">
                         <span class="text-gray-400">No Photo</span>
@@ -35,21 +35,14 @@
             </div>
             
             <!-- Right Side Text -->
-            <div class="w-full md:w-7/12 flex flex-col items-start cursor-pointer group" onclick="toggleReadMore(this)">
+            <div class="w-full md:w-7/12 flex flex-col items-start group">
                 <h2 class="text-4xl md:text-5xl font-black text-[#0f172a] uppercase tracking-tighter mb-4">President</h2>
                 <div class="w-16 h-1.5 bg-[#2ecc71] mb-8"></div>
                 
                 <div class="prose prose-lg text-gray-600 mb-6 speech-text-container relative w-full">
-                    <div class="speech-content overflow-hidden transition-all duration-300 relative line-clamp-3">
+                    <div class="speech-content transition-all duration-300 relative">
                         {!! $aboutBcgSetting->president_speech !!}
-                        <!-- Fading gradient at the bottom when collapsed -->
-                        <div class="fade-out absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent transition-opacity"></div>
                     </div>
-                </div>
-                
-                <div class="read-more-btn text-[#2ecc71] font-bold text-sm flex items-center gap-1 group-hover:text-[#27ae60] transition-colors mb-8">
-                    <span>More...</span>
-                    <svg class="w-4 h-4 transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
                 
                 <div class="pt-6 border-t border-gray-100 w-full">
@@ -68,7 +61,7 @@
                 <div class="absolute -top-4 -right-4 w-full h-full bg-[#e8f5e9] rounded-3xl -z-10"></div>
                 <div class="bg-white p-4 rounded-3xl shadow-xl">
                     @if($aboutBcgSetting->gs_image_path)
-                    <img src="{{ asset('storage/' . $aboutBcgSetting->gs_image_path) }}" alt="{{ $aboutBcgSetting->gs_name }}" class="w-full h-auto aspect-[4/5] object-cover rounded-2xl">
+                    <img src="{{ asset('storage/' . $aboutBcgSetting->gs_image_path) }}" alt="{{ $aboutBcgSetting->gs_name }}" class="w-full h-auto aspect-[4/5] object-contain bg-white rounded-2xl">
                     @else
                     <div class="w-full aspect-[4/5] bg-gray-200 rounded-2xl flex items-center justify-center">
                         <span class="text-gray-400">No Photo</span>
@@ -78,21 +71,14 @@
             </div>
             
             <!-- Left Side Text -->
-            <div class="w-full md:w-7/12 flex flex-col items-start cursor-pointer group" onclick="toggleReadMore(this)">
+            <div class="w-full md:w-7/12 flex flex-col items-start group">
                 <h2 class="text-4xl md:text-5xl font-black text-[#0f172a] uppercase tracking-tighter mb-4 text-left">General Secretary</h2>
                 <div class="w-16 h-1.5 bg-[#2ecc71] mb-8"></div>
                 
                 <div class="prose prose-lg text-gray-600 mb-6 speech-text-container relative w-full">
-                    <div class="speech-content overflow-hidden transition-all duration-300 relative line-clamp-3">
+                    <div class="speech-content transition-all duration-300 relative">
                         {!! $aboutBcgSetting->gs_speech !!}
-                        <!-- Fading gradient at the bottom when collapsed -->
-                        <div class="fade-out absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent transition-opacity"></div>
                     </div>
-                </div>
-                
-                <div class="read-more-btn text-[#2ecc71] font-bold text-sm flex items-center gap-1 group-hover:text-[#27ae60] transition-colors mb-8">
-                    <span>More...</span>
-                    <svg class="w-4 h-4 transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
                 
                 <div class="pt-6 border-t border-gray-100 w-full">
@@ -117,7 +103,7 @@
                         <div class="absolute -top-4 {{ $isEven ? '-left-4' : '-right-4' }} w-full h-full bg-[#e8f5e9] rounded-3xl -z-10"></div>
                         <div class="bg-white p-4 rounded-3xl shadow-xl">
                             @if(isset($other_speech['image_path']) && $other_speech['image_path'])
-                            <img src="{{ asset('storage/' . $other_speech['image_path']) }}" alt="{{ $other_speech['name'] }}" class="w-full h-auto aspect-[4/5] object-cover rounded-2xl">
+                            <img src="{{ asset('storage/' . $other_speech['image_path']) }}" alt="{{ $other_speech['name'] }}" class="w-full h-auto aspect-[4/5] object-contain bg-white rounded-2xl">
                             @else
                             <div class="w-full aspect-[4/5] bg-gray-200 rounded-2xl flex items-center justify-center">
                                 <span class="text-gray-400">No Photo</span>
@@ -127,21 +113,14 @@
                     </div>
                     
                     <!-- Text Side -->
-                    <div class="w-full md:w-7/12 flex flex-col items-start cursor-pointer group" onclick="toggleReadMore(this)">
+                    <div class="w-full md:w-7/12 flex flex-col items-start group">
                         <h2 class="text-4xl md:text-5xl font-black text-[#0f172a] uppercase tracking-tighter mb-4 text-left">{{ $other_speech['designation'] ?? 'Representative' }}</h2>
                         <div class="w-16 h-1.5 bg-[#2ecc71] mb-8"></div>
                         
                         <div class="prose prose-lg text-gray-600 mb-6 speech-text-container relative w-full">
-                            <div class="speech-content overflow-hidden transition-all duration-300 relative line-clamp-3">
+                            <div class="speech-content transition-all duration-300 relative">
                                 {!! $other_speech['speech'] ?? '' !!}
-                                <!-- Fading gradient at the bottom when collapsed -->
-                                <div class="fade-out absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent transition-opacity"></div>
                             </div>
-                        </div>
-                        
-                        <div class="read-more-btn text-[#2ecc71] font-bold text-sm flex items-center gap-1 group-hover:text-[#27ae60] transition-colors mb-8">
-                            <span>More...</span>
-                            <svg class="w-4 h-4 transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                         
                         <div class="pt-6 border-t border-gray-100 w-full">
@@ -158,28 +137,6 @@
 
 @push('scripts')
 <script>
-    // Global function attached to window for the onclick handler
-    window.toggleReadMore = function(containerWrapper) {
-        const container = containerWrapper.querySelector('.speech-content');
-        const fadeOut = containerWrapper.querySelector('.fade-out');
-        const span = containerWrapper.querySelector('.read-more-btn span');
-        const icon = containerWrapper.querySelector('.icon');
-        
-        if (container.classList.contains('line-clamp-3')) {
-            // Expand
-            container.classList.remove('line-clamp-3');
-            if(fadeOut) fadeOut.style.opacity = '0';
-            span.textContent = 'Less...';
-            icon.classList.add('rotate-180');
-        } else {
-            // Collapse
-            container.classList.add('line-clamp-3');
-            if(fadeOut) fadeOut.style.opacity = '1';
-            span.textContent = 'More...';
-            icon.classList.remove('rotate-180');
-        }
-    };
-
     document.addEventListener('DOMContentLoaded', () => {
         // GSAP Animations
         if (typeof gsap !== 'undefined') {

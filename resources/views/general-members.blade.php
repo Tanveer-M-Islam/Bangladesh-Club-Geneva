@@ -70,9 +70,9 @@
                         x-transition:enter-end="opacity-100 scale-100"
                     >
                         <!-- Member Photo (Full-Width Square-Rounded) -->
-                        <div class="relative w-full aspect-[4/5] sm:aspect-square mb-5 rounded-2xl overflow-hidden bg-gray-100 border-4 border-white shadow-md transition-transform duration-500">
+                        <div class="relative w-full aspect-[4/5] sm:aspect-square mb-5 rounded-2xl overflow-hidden bg-white border-4 border-white shadow-md transition-transform duration-500">
                             @if(!empty($member['image_path']))
-                                <img src="{{ asset('storage/' . $member['image_path']) }}" alt="{{ $member['name'] }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <img src="{{ asset('storage/' . $member['image_path']) }}" alt="{{ $member['name'] }}" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
                             @else
                                 <div class="w-full h-full flex items-center justify-center text-gray-300 bg-gray-50">
                                     <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" /></svg>

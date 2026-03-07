@@ -65,6 +65,11 @@ Route::get('/about/speech', function () {
     return view('speech', compact('aboutBcgSetting'));
 })->name('speech');
 
+Route::get('/about/membership-policy', function () {
+    $aboutBcgSetting = AboutBcgSetting::first();
+    return view('membership-policy', compact('aboutBcgSetting'));
+})->name('membership.policy');
+
 Route::get('/news', function (\Illuminate\Http\Request $request) {
     $newsSetting = \App\Models\NewsSetting::first();
     

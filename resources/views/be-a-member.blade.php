@@ -78,7 +78,7 @@
                         <span class="w-2 h-8 bg-red-600 mr-4 rounded-full"></span>
                         Why Join Us?
                     </h3>
-                    <ul class="space-y-4 text-gray-300 font-light">
+                    <ul class="space-y-4 text-gray-300 font-light relative z-10">
                         <li class="flex items-center">
                             <svg class="w-5 h-5 text-[#2ecc71] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             Connect with the Bangladeshi community in Geneva.
@@ -92,6 +92,13 @@
                             Support cultural and social initiatives.
                         </li>
                     </ul>
+
+                    <div class="mt-8 pt-6 border-t border-gray-700/50 text-center relative z-10">
+                        <a href="{{ route('membership.policy') }}" class="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white text-sm font-bold uppercase tracking-wider rounded-xl transition-all duration-300 border border-white/10 hover:border-white/30 group shadow-lg">
+                            See our Membership Policy
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
                 </div>
                 
             </div>

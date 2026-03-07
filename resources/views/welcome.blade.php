@@ -109,10 +109,14 @@
                             </h2>
                         </div>
                         
-                        <p class="text-gray-600 leading-relaxed mb-10 text-lg">
-                            In 1995, Bangladeshi immigrant living in Geneva, Switzerland formed a club named "Probas". After continuing for few years, it was renamed "Bangladesh Club Geneva". The purpose of the club is to make a platform where the interest of the Bangladeshi immigrant living in Geneva will served and secured. Along with to make a multilateral relations with other communities existed in Geneva.
-                        </p>
-                        
+                        <div class="prose text-gray-600 leading-relaxed mb-10 text-lg">
+                            @if($siteSetting && $siteSetting->introduction)
+                                {!! $siteSetting->introduction !!}
+                            @else
+                                <p>In 1995, Bangladeshi immigrant living in Geneva, Switzerland formed a club named "Probas". After continuing for few years, it was renamed "Bangladesh Club Geneva". The purpose of the club is to make a platform where the interest of the Bangladeshi immigrant living in Geneva will served and secured. Along with to make a multilateral relations with other communities existed in Geneva.</p>
+                            @endif
+                        </div>
+
                         <div class="flex flex-wrap items-center gap-6">
                             <a href="{{ route('about-us') }}" class="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg shadow-green-900/20 transition-all active:scale-95">
                                 View More
@@ -136,9 +140,9 @@
                     
                     <div class="relative rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl skew-x-1 group-hover:skew-x-0 transition-all duration-700">
                         @if($siteSetting && $siteSetting->intro_image_path)
-                            <img src="{{ asset('storage/' . $siteSetting->intro_image_path) }}" alt="Our Meeting" class="w-full h-auto scale-110 group-hover:scale-100 transition-transform duration-1000 object-cover min-h-[400px]">
+                            <img src="{{ asset('storage/' . $siteSetting->intro_image_path) }}" alt="Our Meeting" class="w-full h-full object-contain bg-gray-50 transition-transform duration-1000 min-h-[400px]">
                         @else
-                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2670&auto=format&fit=crop" alt="Introduction Placeholder" class="w-full h-auto scale-110 group-hover:scale-100 transition-transform duration-1000 object-cover min-h-[400px]">
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2670&auto=format&fit=crop" alt="Introduction Placeholder" class="w-full h-full object-contain bg-gray-50 transition-transform duration-1000 min-h-[400px]">
                         @endif
                         
                         <!-- Overlay gradient -->
@@ -178,11 +182,11 @@
 
             @foreach($ads as $index => $adPath)
                 <div class="ad-card opacity-0 translate-y-20" data-index="{{ $index }}">
-                    <div class="relative group h-64 md:h-72 rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
+                    <div class="relative group rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
                         @if($adPath)
-                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 1 }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 1 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
                         @else
-                            <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center">
+                            <div class="w-full h-64 md:h-72 flex flex-col items-center justify-center p-6 text-center">
                                 <div class="w-16 h-16 mb-4 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 group-hover:bg-red-600/20 transition-colors">
                                     <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                                 </div>
@@ -217,7 +221,7 @@
                         <!-- Image Container -->
                         <div class="relative h-72 overflow-hidden">
                             @if(!empty($album->images))
-                                <img src="{{ asset('storage/' . $album->images[0]) }}" alt="{{ $album->title }}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                                <img src="{{ asset('storage/' . $album->images[0]) }}" alt="{{ $album->title }}" class="w-full h-full object-contain bg-gray-50 transition-transform duration-1000 group-hover:scale-110">
                             @else
                                 <div class="w-full h-full bg-gray-100 flex items-center justify-center">
                                     <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -244,8 +248,8 @@
                                 <div class="flex -space-x-3">
                                     @php $albumImages = is_array($album->images) ? $album->images : json_decode($album->images, true); @endphp
                                     @foreach(array_slice($albumImages ?? [], 0, 3) as $img)
-                                        <div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-md">
-                                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover">
+                                        <div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-md bg-white">
+                                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-contain">
                                         </div>
                                     @endforeach
                                     @if(count($albumImages ?? []) > 3)
@@ -311,19 +315,9 @@
                 </div>
 
                 <div class="prose prose-lg text-gray-600 leading-relaxed font-medium space-y-6">
-                    <div x-show="!expanded" class="transition-all duration-300">
-                        {!! Str::words(strip_tags($aboutBcgSetting->president_speech), 40) !!}
-                    </div>
-                    <div x-show="expanded" x-cloak class="transition-all duration-300">
+                    <div class="transition-all duration-300">
                         {!! $aboutBcgSetting->president_speech !!}
                     </div>
-                    
-                    @if(Str::wordCount(strip_tags($aboutBcgSetting->president_speech)) > 40)
-                        <button @click="expanded = !expanded" class="text-green-600 font-bold hover:underline mt-2 focus:outline-none flex items-center gap-2">
-                            <span x-text="expanded ? 'Show Less' : 'More...'"></span>
-                            <svg :class="expanded ? 'rotate-180' : ''" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                    @endif
                 </div>
 
                 <div class="pt-4 border-t border-gray-100">
@@ -353,19 +347,9 @@
                 </div>
 
                 <div class="prose prose-lg text-gray-600 leading-relaxed font-medium space-y-6 ml-auto lg:ml-0">
-                    <div x-show="!expanded" class="transition-all duration-300">
-                        {!! Str::words(strip_tags($aboutBcgSetting->gs_speech), 40) !!}
-                    </div>
-                    <div x-show="expanded" x-cloak class="transition-all duration-300">
+                    <div class="transition-all duration-300">
                         {!! $aboutBcgSetting->gs_speech !!}
                     </div>
-                    
-                    @if(Str::wordCount(strip_tags($aboutBcgSetting->gs_speech)) > 40)
-                        <button @click="expanded = !expanded" class="text-green-600 font-bold hover:underline mt-2 focus:outline-none flex items-center gap-2 ml-auto lg:ml-0">
-                            <span x-text="expanded ? 'Show Less' : 'More...'"></span>
-                            <svg :class="expanded ? 'rotate-180' : ''" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                    @endif
                 </div>
 
                 <div class="pt-4 border-t border-gray-200">
@@ -425,11 +409,11 @@
 
             @foreach($ads2 as $index => $adPath)
                 <div class="ad-card-2 opacity-0 translate-y-20" data-index="{{ $index }}">
-                    <div class="relative group h-64 md:h-72 rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
+                    <div class="relative group rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
                         @if($adPath)
-                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 5 }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 5 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
                         @else
-                            <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center">
+                            <div class="w-full h-64 md:h-72 flex flex-col items-center justify-center p-6 text-center">
                                 <div class="w-16 h-16 mb-4 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 group-hover:bg-red-600/20 transition-colors">
                                     <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                                 </div>

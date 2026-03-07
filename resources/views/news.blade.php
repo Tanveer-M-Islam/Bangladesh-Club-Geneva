@@ -89,7 +89,7 @@
                                     @php
                                         $isFallbackIcon = str_contains($image, '2021_Facebook_icon.svg');
                                     @endphp
-                                    <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-full {{ $isFallbackIcon ? 'object-contain p-6 opacity-80' : 'object-cover' }}">
+                                    <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-full {{ $isFallbackIcon ? 'object-contain p-6 opacity-80' : 'object-contain bg-gray-50' }}">
                                     <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
                                 </div>
                             @endif

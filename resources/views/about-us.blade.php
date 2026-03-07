@@ -17,6 +17,39 @@
 <div class="bg-gray-50 py-12 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 lg:space-y-32">
         
+        <!-- Introduction Section -->
+        <section id="intro-section" class="relative">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row group">
+                <div class="lg:w-1/2 p-6 sm:p-10 lg:p-16 flex flex-col justify-center about-card-content">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 lg:mb-8 text-center sm:text-left">
+                        <div class="w-16 h-16 mx-auto sm:mx-0 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-600 shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">About Us</h2>
+                    </div>
+                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left pr-4">
+                        @php $siteSetting = \App\Models\SiteSetting::first(); @endphp
+                        @if($siteSetting && $siteSetting->introduction)
+                            {!! $siteSetting->introduction !!}
+                        @else
+                            <p>In 1995, Bangladeshi immigrant living in Geneva, Switzerland formed a club named "Probas". After continuing for few years, it was renamed "Bangladesh Club Geneva". The purpose of the club is to make a platform where the interest of the Bangladeshi immigrant living in Geneva will served and secured. Along with to make a multilateral relations with other communities existed in Geneva.</p>
+                        @endif
+                    </div>
+                </div>
+                <!-- Image Side -->
+                <div class="lg:w-1/2 relative min-h-[250px] sm:min-h-[300px] lg:min-h-full overflow-hidden about-card-image">
+                    @if($siteSetting && $siteSetting->intro_image_path)
+                        <img src="{{ asset('storage/' . $siteSetting->intro_image_path) }}" alt="Introduction" class="absolute inset-0 w-full h-full object-cover bg-gray-50 transition-transform duration-1000 group-hover:scale-105">
+                    @else
+                        <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                            <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                    @endif
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent lg:block hidden"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Mission Section -->
         <section id="mission-section" class="relative">
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row group">
@@ -27,7 +60,7 @@
                         </div>
                         <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">{{ $aboutBcgSetting?->mission_title ?? 'Our Mission' }}</h2>
                     </div>
-                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left overflow-y-auto max-h-[400px] scrollbar-custom pr-4">
+                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left pr-4">
                         @if($aboutBcgSetting?->mission_text)
                             {!! $aboutBcgSetting->mission_text !!}
                         @else
@@ -35,9 +68,9 @@
                         @endif
                     </div>
                 </div>
-                <div class="lg:w-1/2 relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] overflow-hidden about-card-image">
+                <div class="lg:w-1/2 relative min-h-[250px] sm:min-h-[300px] lg:min-h-full overflow-hidden about-card-image">
                     @if($aboutBcgSetting?->mission_image_path)
-                        <img src="{{ asset('storage/' . $aboutBcgSetting->mission_image_path) }}" alt="Mission" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        <img src="{{ asset('storage/' . $aboutBcgSetting->mission_image_path) }}" alt="Mission" class="absolute inset-0 w-full h-full object-cover bg-gray-50 transition-transform duration-1000 group-hover:scale-105">
                     @else
                         <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
                             <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -51,9 +84,9 @@
         <!-- Vision Section -->
         <section id="vision-section" class="relative">
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col-reverse lg:flex-row group">
-                <div class="lg:w-1/2 relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] overflow-hidden about-card-image">
+                <div class="lg:w-1/2 relative min-h-[250px] sm:min-h-[300px] lg:min-h-full overflow-hidden about-card-image">
                     @if($aboutBcgSetting?->vision_image_path)
-                        <img src="{{ asset('storage/' . $aboutBcgSetting->vision_image_path) }}" alt="Vision" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        <img src="{{ asset('storage/' . $aboutBcgSetting->vision_image_path) }}" alt="Vision" class="absolute inset-0 w-full h-full object-cover bg-gray-50 transition-transform duration-1000 group-hover:scale-105">
                     @else
                         <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
                             <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -68,7 +101,7 @@
                         </div>
                         <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">{{ $aboutBcgSetting?->vision_title ?? 'Our Vision' }}</h2>
                     </div>
-                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left overflow-y-auto max-h-[400px] scrollbar-custom pr-4">
+                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none text-center sm:text-left pr-4">
                         @if($aboutBcgSetting?->vision_text)
                             {!! $aboutBcgSetting->vision_text !!}
                         @else
@@ -79,40 +112,7 @@
             </div>
         </section>
 
-        <!-- Rules Section -->
-        <section id="rules-section" class="relative">
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row group">
-                <div class="lg:w-1/2 p-6 sm:p-10 lg:p-16 flex flex-col justify-center about-card-content">
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 lg:mb-8 text-center sm:text-left">
-                        <div class="w-16 h-16 mx-auto sm:mx-0 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        </div>
-                        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tighter">Membership Policy</h2>
-                    </div>
-                    <div class="prose prose-base lg:prose-lg text-gray-600 leading-relaxed max-w-none sm:text-left overflow-y-auto max-h-[400px] scrollbar-custom pr-4">
-                        @if($aboutBcgSetting?->terms_text)
-                            {!! $aboutBcgSetting->terms_text !!}
-                        @else
-                            <ul>
-                                <li>Uphold the constitution of the Bangladesh Club Geneva.</li>
-                                <li>Participate actively in scheduled meetings and events.</li>
-                                <li>Maintain transparency and integrity in all official duties.</li>
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-                <div class="lg:w-1/2 relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] overflow-hidden about-card-image">
-                    @if($aboutBcgSetting?->terms_image_path)
-                        <img src="{{ asset('storage/' . $aboutBcgSetting->terms_image_path) }}" alt="Terms" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                    @else
-                        <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                            <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                        </div>
-                    @endif
-                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent lg:block hidden"></div>
-                </div>
-            </div>
-        </section>
+
 
     </div>
 </div>
@@ -131,7 +131,7 @@
         });
 
         // Setup common scroll animation for each section
-        const sections = ['#mission-section', '#vision-section', '#rules-section'];
+        const sections = ['#mission-section', '#vision-section'];
 
         sections.forEach((section, index) => {
             const isReverse = index % 2 !== 0; // Vision is reversed

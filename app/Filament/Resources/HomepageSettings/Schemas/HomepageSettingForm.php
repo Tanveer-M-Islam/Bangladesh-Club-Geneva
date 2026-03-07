@@ -39,8 +39,11 @@ class HomepageSettingForm
                     ])->columns(2),
 
                 Section::make('Intro Section')
-                    ->description('Manage the introduction image.')
+                    ->description('Manage the introduction image and text.')
                     ->schema([
+                        RichEditor::make('introduction')
+                            ->label('Introduction Text')
+                            ->columnSpanFull(),
                         FileUpload::make('intro_image_path')
                             ->label('Introduction Image')
                             ->image()
