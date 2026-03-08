@@ -55,14 +55,38 @@ class HomepageSettingForm
                 Section::make('Advertisements')
                     ->description('Manage the four advertisement slots on the homepage.')
                     ->schema([
-                        FileUpload::make('ad1_path')->label('Ad Slot 1')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad2_path')->label('Ad Slot 2')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad3_path')->label('Ad Slot 3')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad4_path')->label('Ad Slot 4')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad5_path')->label('Ad Slot 5')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad6_path')->label('Ad Slot 6')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad7_path')->label('Ad Slot 7')->image()->directory('ads')->disk('public')->visibility('public'),
-                        FileUpload::make('ad8_path')->label('Ad Slot 8')->image()->directory('ads')->disk('public')->visibility('public'),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 1')->schema([
+                            FileUpload::make('ad1_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad1_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 2')->schema([
+                            FileUpload::make('ad2_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad2_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 3')->schema([
+                            FileUpload::make('ad3_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad3_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 4')->schema([
+                            FileUpload::make('ad4_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad4_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 5')->schema([
+                            FileUpload::make('ad5_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad5_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 6')->schema([
+                            FileUpload::make('ad6_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad6_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 7')->schema([
+                            FileUpload::make('ad7_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad7_url')->label('URL')->url(),
+                        ])->columnSpan(1),
+                        \Filament\Schemas\Components\Section::make('Ad Slot 8')->schema([
+                            FileUpload::make('ad8_path')->label('Image')->image()->directory('ads')->disk('public')->visibility('public'),
+                            TextInput::make('ad8_url')->label('URL')->url(),
+                        ])->columnSpan(1),
                     ])->columns(2),
 
                 Section::make('Global Assets')

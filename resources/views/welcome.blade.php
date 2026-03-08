@@ -170,21 +170,33 @@
 <!-- Advertisement Section -->
 <section id="ads-section" class="py-20 bg-[#f3f4f6]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 uppercase tracking-tighter mb-4">
+                Our Commercial Partners
+            </h2>
+            <div class="w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @php
                 $ads = [
-                    $siteSetting->ad1_path ?? null,
-                    $siteSetting->ad2_path ?? null,
-                    $siteSetting->ad3_path ?? null,
-                    $siteSetting->ad4_path ?? null,
+                    ['path' => $siteSetting->ad1_path ?? null, 'url' => $siteSetting->ad1_url ?? null],
+                    ['path' => $siteSetting->ad2_path ?? null, 'url' => $siteSetting->ad2_url ?? null],
+                    ['path' => $siteSetting->ad3_path ?? null, 'url' => $siteSetting->ad3_url ?? null],
+                    ['path' => $siteSetting->ad4_path ?? null, 'url' => $siteSetting->ad4_url ?? null],
                 ];
             @endphp
 
-            @foreach($ads as $index => $adPath)
+            @foreach($ads as $index => $ad)
                 <div class="ad-card opacity-0 translate-y-20" data-index="{{ $index }}">
                     <div class="relative group rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
-                        @if($adPath)
-                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 1 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
+                        @if($ad['path'])
+                            @if($ad['url'])
+                                <a href="{{ $ad['url'] }}" target="_blank" rel="noopener noreferrer" class="block">
+                                    <img src="{{ asset('storage/' . $ad['path']) }}" alt="Advertisement {{ $index + 1 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
+                                </a>
+                            @else
+                                <img src="{{ asset('storage/' . $ad['path']) }}" alt="Advertisement {{ $index + 1 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
+                            @endif
                         @else
                             <div class="w-full h-64 md:h-72 flex flex-col items-center justify-center p-6 text-center">
                                 <div class="w-16 h-16 mb-4 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 group-hover:bg-red-600/20 transition-colors">
@@ -397,21 +409,33 @@
 <!-- Advertisement Section 2 (Below GS) -->
 <section id="ads-section-2" class="py-20 bg-[#f3f4f6]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 uppercase tracking-tighter mb-4">
+                Our Commercial Partners
+            </h2>
+            <div class="w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @php
                 $ads2 = [
-                    $siteSetting->ad5_path ?? null,
-                    $siteSetting->ad6_path ?? null,
-                    $siteSetting->ad7_path ?? null,
-                    $siteSetting->ad8_path ?? null,
+                    ['path' => $siteSetting->ad5_path ?? null, 'url' => $siteSetting->ad5_url ?? null],
+                    ['path' => $siteSetting->ad6_path ?? null, 'url' => $siteSetting->ad6_url ?? null],
+                    ['path' => $siteSetting->ad7_path ?? null, 'url' => $siteSetting->ad7_url ?? null],
+                    ['path' => $siteSetting->ad8_path ?? null, 'url' => $siteSetting->ad8_url ?? null],
                 ];
             @endphp
 
-            @foreach($ads2 as $index => $adPath)
+            @foreach($ads2 as $index => $ad)
                 <div class="ad-card-2 opacity-0 translate-y-20" data-index="{{ $index }}">
                     <div class="relative group rounded-2xl overflow-hidden border-2 border-gray-100 bg-white shadow-lg transition-all duration-500 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-900/10">
-                        @if($adPath)
-                            <img src="{{ asset('storage/' . $adPath) }}" alt="Advertisement {{ $index + 5 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
+                        @if($ad['path'])
+                            @if($ad['url'])
+                                <a href="{{ $ad['url'] }}" target="_blank" rel="noopener noreferrer" class="block">
+                                    <img src="{{ asset('storage/' . $ad['path']) }}" alt="Advertisement {{ $index + 5 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
+                                </a>
+                            @else
+                                <img src="{{ asset('storage/' . $ad['path']) }}" alt="Advertisement {{ $index + 5 }}" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110">
+                            @endif
                         @else
                             <div class="w-full h-64 md:h-72 flex flex-col items-center justify-center p-6 text-center">
                                 <div class="w-16 h-16 mb-4 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 group-hover:bg-red-600/20 transition-colors">

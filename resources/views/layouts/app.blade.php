@@ -265,7 +265,7 @@
                     {{ $footerSetting->copyright_text ?? 'Copyright © ' . date('Y') . ' Bangladesh Club Geneva. All Rights Reserved.' }}
                 </p>
                 <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">
-                    Developed with ❤️ for BCG
+                    Developed By Limmex Automation
                 </p>
             </div>
         </div>
