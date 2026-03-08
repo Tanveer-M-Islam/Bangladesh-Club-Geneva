@@ -2,6 +2,10 @@
 
 @section('content')
 
+@php
+    $contactSetting = \App\Models\ContactSetting::first();
+@endphp
+
 <!-- Hero Section -->
 <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-gray-900">
     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/contact-hero-bg.jpg') }}'); opacity: 0.3;"></div>
@@ -39,8 +43,8 @@
                     <div class="ml-6 flex flex-col justify-center">
                         <h3 class="text-lg font-bold text-gray-900 leading-tight mb-1">Organization</h3>
                         <p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                            Bangladesh Club Geneva<br>
-                            <span class="text-gray-400 font-medium">Reg No: CHE-420.657.820</span>
+                            {{ $contactSetting?->organization_name ?? 'Bangladesh Club Geneva' }}<br>
+                            <span class="text-gray-400 font-medium">Reg No: {{ $contactSetting?->registration_no ?? 'CHE-420.657.820' }}</span>
                         </p>
                     </div>
                 </div>
@@ -53,7 +57,13 @@
                     <div class="ml-6 flex flex-col justify-center">
                         <h3 class="text-lg font-bold text-gray-900 leading-tight mb-1">Phone</h3>
                         <p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                            +41798117745, +41798127544, +41787656150
+                            @if(!empty($contactSetting?->phones) && is_array($contactSetting->phones))
+                                {{ implode(', ', $contactSetting->phones) }}
+                            @elseif(!empty($contactSetting?->phones) && is_string($contactSetting->phones))
+                                {{ $contactSetting->phones }}
+                            @else
+                                +41798117745, +41798127544, +41787656150
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -66,7 +76,13 @@
                     <div class="ml-6 flex flex-col justify-center">
                         <h3 class="text-lg font-bold text-gray-900 leading-tight mb-1">Email</h3>
                         <p class="text-sm md:text-base text-gray-600 leading-relaxed break-all">
-                            info@bangladeshclubgeneva.ch
+                            @if(!empty($contactSetting?->emails) && is_array($contactSetting->emails))
+                                {{ implode(', ', $contactSetting->emails) }}
+                            @elseif(!empty($contactSetting?->emails) && is_string($contactSetting->emails))
+                                {{ $contactSetting->emails }}
+                            @else
+                                info@bangladeshclubgeneva.ch
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -79,7 +95,7 @@
                     <div class="ml-6 flex flex-col justify-center">
                         <h3 class="text-lg font-bold text-gray-900 leading-tight mb-1">Location</h3>
                         <p class="text-sm md:text-base text-gray-600 leading-relaxed max-w-sm">
-                            Promenade de la Dentellière 14, 1217 Meyrin Geneva, Switzerland
+                            {{ $contactSetting?->location ?? 'Promenade de la Dentellière 14, 1217 Meyrin Geneva, Switzerland' }}
                         </p>
                     </div>
                 </div>
